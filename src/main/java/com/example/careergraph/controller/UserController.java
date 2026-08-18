@@ -21,4 +21,13 @@ public class UserController {
     public String getUser(@PathVariable String name) {
         return userService.findUserByName(name);
     }
+
+    @PostMapping("/{userName}/skills/{skillName}")
+    public String addSkill(
+            @PathVariable String userName,
+            @PathVariable String skillName
+    ) {
+        userService.addSkillToUser(userName, skillName);
+        return "Skill added successfully";
+    }
 }

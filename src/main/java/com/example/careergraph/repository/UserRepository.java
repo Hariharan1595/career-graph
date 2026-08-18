@@ -51,4 +51,24 @@ public class UserRepository {
 
         }
    }
+
+    public void addSkillToUser(String userName, String skillName) {
+
+        String cypher = """
+            MATCH (u:User {name: $userName})
+            MATCH (s:Skill {name: $skillName})
+            MERGE (u)-[:HAS_SKILL]->(s)
+            """;
+
+        try (Session session = driver.session()) {
+
+            session.run(
+                    cypher,
+                    Map.of(
+                            "userName", userName,
+                            "skillName", skillName
+                    )
+            );
+        }
+    }
 }

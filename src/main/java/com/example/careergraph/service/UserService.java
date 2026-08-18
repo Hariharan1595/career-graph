@@ -18,4 +18,8 @@ public class UserService {
     public  String findUserByName(String name){
         return userRepository.findUserByName(name);
     }
+
+    public void addSkillToUser(String userName, String skillName) {
+        userRepository.addSkillToUser(userName, skillName);
+    }
 }
