@@ -1,10 +1,10 @@
 package com.example.careergraph.service;
 
 import com.example.careergraph.dto.RecommendationResponse;
-import com.example.careergraph.exception.ResourceNotFoundException;
 import com.example.careergraph.repository.RecommendationRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -22,11 +22,15 @@ public class RecommendationService {
                 recommendationRepository.getRecommendations(userName);
 
         if (recommendations.isEmpty()) {
-            throw new ResourceNotFoundException(
+            throw new RuntimeException(
                     "No job recommendations found for user: " + userName
             );
         }
 
-        return recommendations;
+        return recommendations.stream()
+                .sorted(Comparator.comparingDouble(
+                        RecommendationResponse::matchPercentage
+                ).reversed())
+                .toList();
     }
 }

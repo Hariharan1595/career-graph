@@ -2,12 +2,11 @@ package com.example.careergraph.dto;
 
 import java.util.List;
 
-public record RecommendationResponse(
+public record SkillGapResponse(
         String job,
         String company,
-        List<String> matchedSkills,
+        List<String> currentSkills,
         List<String> requiredSkills,
-        List<String> missingSkills,
-        double matchPercentage
+        List<String> missingSkills
 ) {
 }
