@@ -1,10 +1,11 @@
 package com.example.careergraph.service;
 
+import com.example.careergraph.dto.RecommendationResponse;
+import com.example.careergraph.exception.ResourceNotFoundException;
 import com.example.careergraph.repository.RecommendationRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class RecommendationService {
@@ -15,7 +16,17 @@ public class RecommendationService {
         this.recommendationRepository = recommendationRepository;
     }
 
-    public List<Map<String, Object>> getRecommendations(String userName) {
-        return recommendationRepository.getRecommendations(userName);
+    public List<RecommendationResponse> getRecommendations(String userName) {
+
+        List<RecommendationResponse> recommendations =
+                recommendationRepository.getRecommendations(userName);
+
+        if (recommendations.isEmpty()) {
+            throw new ResourceNotFoundException(
+                    "No job recommendations found for user: " + userName
+            );
+        }
+
+        return recommendations;
     }
 }

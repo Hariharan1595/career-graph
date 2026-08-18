@@ -1,5 +1,6 @@
 package com.example.careergraph.repository;
 
+import com.example.careergraph.dto.RecommendationResponse;
 import org.neo4j.driver.Driver;
 import org.neo4j.driver.Session;
 import org.springframework.stereotype.Repository;
@@ -16,7 +17,7 @@ public class RecommendationRepository {
         this.driver = driver;
     }
 
-    public List<Map<String, Object>> getRecommendations(String userName) {
+    public List<RecommendationResponse> getRecommendations(String userName) {
 
         String cypher = """
                 MATCH (u:User {name: $userName})
@@ -34,10 +35,10 @@ public class RecommendationRepository {
                             cypher,
                             Map.of("userName", userName)
                     )
-                    .list(record -> Map.of(
-                            "job", record.get("job").asString(),
-                            "company", record.get("company").asString(),
-                            "matchedSkills", record.get("matchedSkills").asList()
+                    .list(record -> new RecommendationResponse(
+                            record.get("job").asString(),
+                            record.get("company").asString(),
+                            record.get("matchedSkills").asList(value -> value.asString())
                     ));
         }
     }

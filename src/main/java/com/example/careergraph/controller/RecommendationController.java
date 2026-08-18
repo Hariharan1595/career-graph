@@ -1,10 +1,10 @@
 package com.example.careergraph.controller;
 
+import com.example.careergraph.dto.RecommendationResponse;
 import com.example.careergraph.service.RecommendationService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/api/recommendations")
@@ -17,7 +17,7 @@ public class RecommendationController {
     }
 
     @GetMapping("/{userName}")
-    public List<Map<String, Object>> getRecommendations(
+    public List<RecommendationResponse> getRecommendations(
             @PathVariable String userName
     ) {
         return recommendationService.getRecommendations(userName);
