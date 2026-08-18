@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>career-graph</artifactId>
+    <artifactId>career-graph-backend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>career-graph</name>
     <description>career-graph</description>
