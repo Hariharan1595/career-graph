@@ -1,7 +1,6 @@
 import {
   ArrowRight,
   BriefcaseBusiness,
-  CheckCircle2,
   Code2,
   GraduationCap,
   Network,
