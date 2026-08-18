@@ -495,7 +495,7 @@ Use `.env.example` files for configuration templates.
 | Frontend | https://career-graph-xigf-qe4zc99u8-hariharan1595s-projects.vercel.app/
 | Backend | https://careergraph-backend-mhns.onrender.com |
 | GitHub | https://github.com/Hariharan1595/career-graph.git |
-| https://drive.google.com/file/d/19QX_NDLKMk5yvY2Lshm3Bxe4QhszmNPR/view?usp=sharing |
+| demo    |https://drive.google.com/file/d/19QX_NDLKMk5yvY2Lshm3Bxe4QhszmNPR/view?usp=sharing |
 
 ## Future Improvements
 
